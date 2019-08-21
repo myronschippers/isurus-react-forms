@@ -13,7 +13,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Header />
+                <Header title="React Forms" />
 
                 <div className="container">
                     <p>{this.state.employee.name} is a {this.state.employee.occupation}</p>
