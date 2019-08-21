@@ -16,7 +16,7 @@ class App extends Component {
                 <Header />
 
                 <div className="container">
-                    <p>{this.employee.name} is a {this.employee.occupation}</p>
+                    <p>{this.state.employee.name} is a {this.state.employee.occupation}</p>
                 </div>
             </div>
         );
