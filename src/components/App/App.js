@@ -33,6 +33,7 @@ class App extends Component {
     //     })
     // }
 
+    // One event handler for all input field change events
     handlerChangeOfAll(event, dataKey) {
         const fieldValue = event.target.value;
         // $(this).data().type
