@@ -11,11 +11,14 @@ class App extends Component {
         employeesList: [],
     };
 
-    // One event handler for all input field change events
+    /**
+     * Handles all input change events to track what the
+     * user has been entering in the form fields.
+     * @param {object} event
+     * @param {string} dataKey
+     */
     handlerChangeOfAll(event, dataKey) {
         const fieldValue = event.target.value;
-        // $(this).data().type
-        // const dataKey = event.target.dataset.type;
 
         this.setState({
             employee: {
@@ -25,6 +28,13 @@ class App extends Component {
         })
     }
 
+    /**
+     * Handles the click event of the Add Employee button.
+     * When clicked we are adding the employee data entered
+     * by the user to the employee list as a new employee
+     * object.
+     * @param {object} event
+     */
     handleClickAddEmployee = (event) => {
         console.log(this.state.employee.name);
         this.setState({
@@ -33,38 +43,25 @@ class App extends Component {
                 occupation: '',
             },
             employeesList: [
-                ...this.state.employeesList,
+                1, 2, 3,
                 this.state.employee
             ]
         });
     }
 
+    /**
+     * React component's render method. Called every time
+     * the state is changed.
+     * @returns {JSX} - view markup
+     */
     render() {
         let message = null;
-        // let employeeListElements = [];
         let employeeTableClasses = 'show';
         
         if (this.state.employeesList.length === 0) {
             message = 'There are no employees';
             employeeTableClasses = 'hide';
         }
-
-        // for (let i = 0; i < this.state.employeesList.length; i++) {
-        //     const employee = this.state.employeesList[i];
-        //     employeeListElements.push(<tr key={i}>
-        //             <td>{employee.name}</td>
-        //             <td>{employee.occupation}</td>
-        //     </tr>);
-        // }
-
-        // this.state.employeesList.forEach((employee, index) => {
-        //     employeeListElements.push(
-        //         <tr key={index}>
-        //             <td>{employee.name}</td>
-        //             <td>{employee.occupation}</td>
-        //         </tr>
-        //     );
-        // });   
         
         const employeeListElements = this.state.employeesList.map((employee, index) => {
             return (<tr key={index}>
@@ -102,14 +99,6 @@ class App extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                        {/* {
-                            this.state.employeesList.map((employee, index) => {
-                                return <tr key={index}>
-                                             <td>{employee.name}</td>
-                                             <td>{employee.occupation}</td>
-                                        </tr>
-                            })
-                        } */}
                         {employeeListElements}
                         </tbody>
                     </table>

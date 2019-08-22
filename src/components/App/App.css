@@ -9,3 +9,8 @@
 .hide {
   display: none;
 }
+
+.cleanTable {
+  background: white;
+  border: 1px solid darkgrey
+}
