@@ -8,7 +8,10 @@ class App extends Component {
             name: '',
             occupation: '',    
         },
-        employeesList: [],
+        employeesList: [
+            { name: 'Timmy', occupation: 'Manager' },
+            { name: 'Doug', occupation: 'Nuisance' }
+        ],
     };
 
     /**
@@ -43,7 +46,7 @@ class App extends Component {
                 occupation: '',
             },
             employeesList: [
-                1, 2, 3,
+                ...this.state.employeesList,
                 this.state.employee
             ]
         });
@@ -56,11 +59,11 @@ class App extends Component {
      */
     render() {
         let message = null;
-        let employeeTableClasses = 'show';
+        let employeeTableClasses = 'cleanTable show';
         
         if (this.state.employeesList.length === 0) {
             message = 'There are no employees';
-            employeeTableClasses = 'hide';
+            employeeTableClasses = 'cleanTable hide';
         }
         
         const employeeListElements = this.state.employeesList.map((employee, index) => {
@@ -91,7 +94,7 @@ class App extends Component {
 
                 <div className="container">
                     <h3>Employees</h3>
-                    <table className={employeeTableClasses}>
+                    <table className={employeeTableClasses} cellSpacing={0}>
                         <thead>
                             <tr>
                                 <th>Name</th>

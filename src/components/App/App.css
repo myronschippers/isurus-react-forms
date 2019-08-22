@@ -12,5 +12,18 @@
 
 .cleanTable {
   background: white;
-  border: 1px solid darkgrey
+  border: 1px solid darkgrey;
+}
+
+.cleanTable th {
+  background: darkgrey;
+  color: white;
+}
+
+.cleanTable td {
+  padding: 10px 15px;
+}
+
+.cleanTable tr:nth-child(even) {
+  background: whitesmoke;
 }
