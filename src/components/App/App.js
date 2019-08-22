@@ -34,23 +34,44 @@ class App extends Component {
             },
             employeesList: [
                 ...this.state.employeesList,
-                this.state.employee.name
+                this.state.employee
             ]
         });
     }
 
     render() {
         let message = null;
-        const employeeListElements = [];
+        // let employeeListElements = [];
+        let employeeTableClasses = 'show';
         
         if (this.state.employeesList.length === 0) {
             message = 'There are no employees';
+            employeeTableClasses = 'hide';
         }
 
-        for (let i = 0; i < this.state.employeesList.length; i++) {
-            const employee = this.state.employeesList[i];
-            employeeListElements.push(<li key={i}>{employee}</li>);
-        }
+        // for (let i = 0; i < this.state.employeesList.length; i++) {
+        //     const employee = this.state.employeesList[i];
+        //     employeeListElements.push(<tr key={i}>
+        //             <td>{employee.name}</td>
+        //             <td>{employee.occupation}</td>
+        //     </tr>);
+        // }
+
+        // this.state.employeesList.forEach((employee, index) => {
+        //     employeeListElements.push(
+        //         <tr key={index}>
+        //             <td>{employee.name}</td>
+        //             <td>{employee.occupation}</td>
+        //         </tr>
+        //     );
+        // });   
+        
+        const employeeListElements = this.state.employeesList.map((employee, index) => {
+            return (<tr key={index}>
+                         <td>{employee.name}</td>
+                         <td>{employee.occupation}</td>
+                    </tr>);
+        });
 
         return (
             <div>
@@ -73,9 +94,25 @@ class App extends Component {
 
                 <div className="container">
                     <h3>Employees</h3>
-                    <ul>
+                    <table className={employeeTableClasses}>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Occupation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {/* {
+                            this.state.employeesList.map((employee, index) => {
+                                return <tr key={index}>
+                                             <td>{employee.name}</td>
+                                             <td>{employee.occupation}</td>
+                                        </tr>
+                            })
+                        } */}
                         {employeeListElements}
-                    </ul>
+                        </tbody>
+                    </table>
                     {message}
                 </div>
             </div>

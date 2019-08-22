@@ -5,3 +5,7 @@
 .container {
   padding: 15px 40px;
 }
+
+.hide {
+  display: none;
+}
